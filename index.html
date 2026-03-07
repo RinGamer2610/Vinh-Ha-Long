@@ -73,29 +73,34 @@
 
         .island-obj {
     position: absolute;
-    /* Điều chỉnh kích thước hiển thị tỉ lệ với ảnh gốc */
     width: 120px; 
-    height: 160px; 
-    background-image: url('https://i.ibb.co/6RdrT2jq/vhl.png'); 
+    height: 120px;
+    /* Sử dụng link ảnh mới nhất của bạn ở đây */
+    background-image: url('https://i.ibb.co/nMSBcTJg/z7596400605720-aa7916e1fa10c817ad0b0e6800cc7f3a.jpg'); 
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center bottom; /* Đặt chân núi sát đáy khung */
+    background-position: center bottom;
     cursor: pointer;
+    
+    /* === BƯỚC QUAN TRỌNG: XÓA KHUNG === */
+    background-color: transparent !important; /* Xóa màu nền trắng */
+    border: none !important;                 /* Xóa viền trắng */
+    box-shadow: none !important;              /* Xóa bóng đổ hình vuông */
+    
+    /* Tạo bóng đổ mềm mại theo hình dáng của núi */
+    filter: drop-shadow(0 12px 8px rgba(0, 0, 0, 0.4));
+    
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    
-    /* Hiệu ứng bóng đổ theo hình dạng núi (quan trọng) */
-    filter: drop-shadow(0 10px 8px rgba(0,0,0,0.4));
-    
-    /* Xóa bỏ text số (1, 2, 3...) đè lên ảnh nếu muốn */
-    color: transparent; 
+    color: transparent; /* Ẩn số 1, 2, 3... */
+    transition: 0.3s ease;
 }
 
-/* Hiệu ứng bay bổng nhẹ nhàng cho hòn đảo */
-.island-obj:not(.solved) {
-    animation: float 3s ease-in-out infinite;
+/* Hiệu ứng phóng to khi di chuột vào đảo */
+.island-obj:hover:not(.solved) {
+    transform: scale(1.1) translateY(-5px);
+    filter: drop-shadow(0 15px 12px rgba(0, 0, 0, 0.5)) brightness(1.1);
 }
 
 @keyframes float {
@@ -233,6 +238,7 @@
     </script>
 </body>
 </html>
+
 
 
 

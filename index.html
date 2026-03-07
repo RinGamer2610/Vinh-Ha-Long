@@ -75,32 +75,32 @@
     position: absolute;
     width: 120px; 
     height: 120px;
-    /* Sử dụng link ảnh mới nhất của bạn ở đây */
     background-image: url('https://i.ibb.co/nMSBcTJg/z7596400605720-aa7916e1fa10c817ad0b0e6800cc7f3a.jpg'); 
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center bottom;
     cursor: pointer;
     
-    /* === BƯỚC QUAN TRỌNG: XÓA KHUNG === */
-    background-color: transparent !important; /* Xóa màu nền trắng */
-    border: none !important;                 /* Xóa viền trắng */
-    box-shadow: none !important;              /* Xóa bóng đổ hình vuông */
+    /* XÓA KHUNG TRIỆT ĐỂ */
+    background-color: transparent !important; 
+    border: none !important;                 
+    box-shadow: none !important;              
+    outline: none !important;
     
-    /* Tạo bóng đổ mềm mại theo hình dáng của núi */
-    filter: drop-shadow(0 12px 8px rgba(0, 0, 0, 0.4));
+    /* BÓNG ĐỔ BÁM SÁT HÌNH DÁNG (Cái này cực quan trọng) */
+    filter: drop-shadow(0 10px 8px rgba(0,0,0,0.3));
     
     display: flex;
     justify-content: center;
     align-items: center;
-    color: transparent; /* Ẩn số 1, 2, 3... */
-    transition: 0.3s ease;
+    color: transparent; 
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Hiệu ứng phóng to khi di chuột vào đảo */
+/* Hiệu ứng khi di chuột vào: Chỉ tác động lên đảo */
 .island-obj:hover:not(.solved) {
-    transform: scale(1.1) translateY(-5px);
-    filter: drop-shadow(0 15px 12px rgba(0, 0, 0, 0.5)) brightness(1.1);
+    transform: scale(1.15); 
+    filter: drop-shadow(0 15px 12px rgba(0,0,0,0.5)) brightness(1.1);
 }
 
 @keyframes float {
@@ -238,6 +238,7 @@
     </script>
 </body>
 </html>
+
 
 
 

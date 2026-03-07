@@ -72,36 +72,42 @@
         }
 
         .island-obj {
-    position: absolute;
-    width: 120px; 
-    height: 120px;
-    background-image: url('https://i.ibb.co/nMSBcTJg/z7596400605720-aa7916e1fa10c817ad0b0e6800cc7f3a.jpg'); 
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    cursor: pointer;
-    
-    /* XÓA KHUNG TRIỆT ĐỂ */
-    background-color: transparent !important; 
-    border: none !important;                 
-    box-shadow: none !important;              
-    outline: none !important;
-    
-    /* BÓNG ĐỔ BÁM SÁT HÌNH DÁNG (Cái này cực quan trọng) */
-    filter: drop-shadow(0 10px 8px rgba(0,0,0,0.3));
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: transparent; 
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
+            position: absolute;
+            width: 120px; 
+            height: 120px;
+            /* Ảnh hòn đảo */
+            background-image: url('https://i.ibb.co/nMSBcTJg/z7596400605720-aa7916e1fa10c817ad0b0e6800cc7f3a.jpg'); 
+            background-size: 80%; /* Giảm kích thước để ảnh không chạm sát mép khung */
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+            
+            /* XÓA NỀN VÀ VIỀN */
+            background-color: transparent !important; 
+            border: none !important;                 
+            box-shadow: none !important;              
+            outline: none !important;
+            
+            /* TẠO HIỆU ỨNG TÁCH NỀN CƠ BẢN */
+            /* Dùng mix-blend-mode để hòa trộn nền xám của ảnh vào nền xanh của bản đồ */
+            mix-blend-mode: multiply; 
+            
+            /* Đổ bóng cho hòn đảo */
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: transparent; 
+            transition: all 0.3s ease;
+        }
 
-/* Hiệu ứng khi di chuột vào: Chỉ tác động lên đảo */
-.island-obj:hover:not(.solved) {
-    transform: scale(1.15); 
-    filter: drop-shadow(0 15px 12px rgba(0,0,0,0.5)) brightness(1.1);
-}
+        /* Khi di chuột vào thì bỏ hiệu ứng multiply để đảo hiện rõ màu sắc */
+        .island-obj:hover:not(.solved) {
+            mix-blend-mode: normal;
+            transform: scale(1.2);
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+        }
 
 @keyframes float {
     0%, 100% { transform: translateY(0); }
@@ -238,6 +244,7 @@
     </script>
 </body>
 </html>
+
 
 
 
